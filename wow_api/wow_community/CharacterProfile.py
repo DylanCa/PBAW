@@ -82,3 +82,16 @@ class CharacterProfile():
         response = requests.get(url)
 
         return response.text
+
+    def items(self,
+              server="eu",
+              realm="archimonde",
+              characterName="Protòtype",
+              locale="en_US"):
+
+        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=items&locale={}&apikey={}'.format(
+            server, realm, characterName, locale, self.apikey)
+
+        response = requests.get(url)
+
+        return response.text
