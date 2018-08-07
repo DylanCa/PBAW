@@ -29,12 +29,12 @@ And that's it ! This module has been developped to be easy to use, are as close 
 p.wowc.guild_profile.members(server='eu', realm='Sargeras', guildName='Real Good Guys', locale='en_GB')
 ```
 
-| Parameter |         Values         |    Default   |
-|:---------:|:----------------------:|:------------:|
-|  `server` | `eu`, `us`, `kr`, `tw` |     `eu`     |
-|  `realm`  |      a realm name      | `archimonde` |
-|  `guild`  |      a guild name      |  `jardiland` |
-|  `locale` |        see docs        |    `en_US`   |
+| Parameter | Values                 | Default      |
+| :-------: | :--------------------: | :----------: |
+| `server`  | `eu`, `us`, `kr`, `tw` | `eu`         |
+| `realm`   | a realm name           | `archimonde` |
+| `guild`   | a guild name           | `jardiland`  |
+| `locale`  | see docs               | `en_US`      |
 
 *A detailed doc will be uploaded on the Github soon.*
 
