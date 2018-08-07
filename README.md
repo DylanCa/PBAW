@@ -42,7 +42,11 @@ And you will receive a `JSON` in return.
 
 ## Documentation
 
-*There is no official documentation as of now. It will be available as soon as possible.*
+*There is no documentation as of now. It will be available as soon as possible.*
+
+Currently, **PBAW** can make API calls to:
+* *World of Warcraft Community API (all servers)*
+* *Diablo 3 Community API (all servers)*
 
 You can find the current progression of the project [here](https://github.com/DylanCa/PBAW/projects).
 
