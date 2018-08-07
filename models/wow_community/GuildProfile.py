@@ -8,7 +8,7 @@ class GuildProfile():
     def guildProfile(self,
                      server="eu",
                      realm="archimonde",
-                     guild="Jardiland",
+                     guildName="Jardiland",
                      locale="en_US",
                      fields="achievements,challenge"):
 
@@ -22,7 +22,7 @@ class GuildProfile():
     def members(self,
                 server="eu",
                 realm="archimonde",
-                guild="Jardiland",
+                guildName="Jardiland",
                 locale="en_US"):
 
         url = 'https://{}.api.battle.net/wow/guild/{}/{}?fields=members&locale={}&apikey={}'.format(
@@ -35,7 +35,7 @@ class GuildProfile():
     def achievements(self,
                      server="eu",
                      realm="archimonde",
-                     guild="Jardiland",
+                     guildName="Jardiland",
                      locale="en_US"):
 
         url = 'https://{}.api.battle.net/wow/guild/{}/{}?fields=achievements&locale={}&apikey={}'.format(
@@ -48,7 +48,7 @@ class GuildProfile():
     def news(self,
              server="eu",
              realm="archimonde",
-             guild="Jardiland",
+             guildName="Jardiland",
              locale="en_US"):
 
         url = 'https://{}.api.battle.net/wow/guild/{}/{}?fields=news&locale={}&apikey={}'.format(
@@ -61,7 +61,7 @@ class GuildProfile():
     def challenge(self,
                   server="eu",
                   realm="archimonde",
-                  guild="Jardiland",
+                  guildName="Jardiland",
                   locale="en_US"):
 
         url = 'https://{}.api.battle.net/wow/guild/{}/{}?fields=challenge&locale={}&apikey={}'.format(
