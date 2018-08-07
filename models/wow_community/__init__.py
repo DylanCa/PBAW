@@ -17,7 +17,6 @@ from .Zone import Zone
 
 
 class WowCommunity():
-    
     def __init__(self, apikey):
         self.achievement = Achievement(apikey)
         self.auction = Auction(apikey)
