@@ -1,6 +1,6 @@
 # PBAW - a Python Battle.net API Wrapper ( Work in Progress )
 
-PBAW stands for `Python Battle.net API Wrapper`, a Python module focusing on simplifying the Battle.net API access.
+PBAW stands for `Python Battle.net API Wrapper`, a Python module focusing on simplifying the Battle.net API access. Keep in mind that I am a student, so I can't say this project is flawless. I will do my best to always improve the code and to update it whenever the API changes.
 
 ## Installation
 
@@ -43,6 +43,12 @@ And you will receive a `JSON` in return.
 ## Documentation
 
 *There is no official documentation as of now. It will be available as soon as possible.*
+
+You can find the current progression of the project [here](https://github.com/DylanCa/PBAW/projects).
+
+Feel free to [open an issue](https://github.com/DylanCa/PBAW/issues) whenever you feel like it is required.
+
+Finally, you can send me a mail if you want: dylan.cattelan@gmail.com.
 
 ## License
 
