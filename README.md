@@ -14,27 +14,21 @@ Clone the project in your Python Project, and import it directly in your code.
 
 To use `PBAW`, you need a [Battle.net Developper API KEY](https://dev.battle.net/), and have knowledge of the [Battle.net API Docs](https://dev.battle.net/io-docs). The knowledge of the API docs is really important, since it is a wrapper, and all it does is wrapping the docs. 
 
+Then, you'll have to copy `local_config_example.py` to `local_config.py`, and change the values of `API_KEY` and `SECRET_KEY` in it according to your own credentials. This is very important, since without it, the module will **not work**.
 
-Once you are okay with that, you can instantiate `PBAW` like the following:
+Once you are okay with that, you can instantiate the APIs you want like the following:
 
 ```python
 from PBAW.pbaw import Pbaw
 
 # Create an instance of Pbaw with the given API Key
-p = Pbaw('0123456789abcd')
+wowc = Pbaw.WowC()
 ```
 
 And that's it ! This module has been developped to be easy to use, are as close as possible of the official Battle.net Docs. For instance, if you want to see the `Members` of the guild `Real Good Guys` on the `eu` serveur, realm `Sargeras`, and you want the result to be in `en_GB`, then you will have to do:
 ```python
-p.wowc.guild_profile.members(server='eu', realm='Sargeras', guildName='Real Good Guys', locale='en_GB')
+wowc.guild_profile.members(server='eu', realm='Sargeras', guildName='Real Good Guys', locale='en_GB')
 ```
-
-| Parameter | Values                 | Default      |
-| :-------: | :--------------------: | :----------: |
-| `server`  | `eu`, `us`, `kr`, `tw` | `eu`         |
-| `realm`   | a realm name           | `archimonde` |
-| `guild`   | a guild name           | `jardiland`  |
-| `locale`  | see docs               | `en_US`      |
 
 *A detailed doc will be uploaded on the Github soon.*
 
@@ -45,8 +39,9 @@ And you will receive a `JSON` in return.
 *There is no documentation as of now. It will be available as soon as possible.*
 
 Currently, **PBAW** can make API calls to:
-* *World of Warcraft Community API (all servers)*
-* *Diablo 3 Community API (all servers)*
+* *World of Warcraft Community API (all servers)* - `wowc = Pbaw.WowC()`
+* *Diablo 3 Community API (all servers)* - `d3c = Pbaw.D3C()`
+* *Starcraft 2 Community API (all servers)* - `sc2c = Pbaw.SC2C()`
 
 You can find the current progression of the project [here](https://github.com/DylanCa/PBAW/projects).
 
