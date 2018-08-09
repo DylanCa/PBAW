@@ -4,7 +4,6 @@ from models.sc2_community import Sc2Community
 
 
 class Pbaw:
-
     def WowC(self, apikey=''):
         return WowCommunity(apikey)
 
