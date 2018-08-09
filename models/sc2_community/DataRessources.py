@@ -1,24 +1,15 @@
-import requests
+from models import Fetcher
 
 
 class DataRessources():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
+    def achievements(self, server="eu", locale="en_US"):
 
-    def achievements(self, server="eu", name="Prototype", locale="en_US"):
+        self.route = '/sc2/data/achievements'
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
-        url = 'https://{}.api.battle.net/sc2/data/achievements?locale={}&apikey={}'.format(
-            server, locale, self.apikey)
+    def rewards(self, server="eu", locale="en_US"):
 
-        response = requests.get(url)
-
-        return response.text
-
-    def rewards(self, server="eu", name="Prototype", locale="en_US"):
-
-        url = 'https://{}.api.battle.net/sc2/data/rewards?locale={}&apikey={}'.format(
-            server, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/sc2/data/rewards'
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

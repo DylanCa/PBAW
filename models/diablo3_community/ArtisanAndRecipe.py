@@ -1,19 +1,13 @@
-import requests
+from models import Fetcher
 
 
 class ArtisanAndRecipe():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
     def getArtisan(self, server="eu", artisanSlug='blacksmith',
                    locale="en_US"):
 
-        url = 'https://{}.api.battle.net/d3/data/artisan/{}?locale={}&apikey={}'.format(
-            server, artisanSlug, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/d3/data/artisan/{}'.format(artisanSlug)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def getRecipe(self,
                   server="eu",
@@ -21,9 +15,7 @@ class ArtisanAndRecipe():
                   recipeSlug='apprentice-flamberge',
                   locale="en_US"):
 
-        url = 'https://{}.api.battle.net/d3/data/artisan/{}/recipe/{}?locale={}&apikey={}'.format(
-            server, artisanSlug, recipeSlug, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/d3/data/artisan/{}/recipe/{}'.format(
+            artisanSlug, recipeSlug)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

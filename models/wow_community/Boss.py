@@ -1,24 +1,14 @@
-import requests
+from models import Fetcher
 
 
 class Boss():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
     def masterList(self, server="eu", locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/boss/?locale={}&apikey={}'.format(
-            server, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server, locale=locale, route='/wow/boss/')
 
     def boss(self, server="eu", bossID="24723", locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/boss/{}?locale={}&apikey={}'.format(
-            server, bossID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/boss/{}'.format(bossID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

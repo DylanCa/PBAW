@@ -1,9 +1,9 @@
-import requests
+from models import Fetcher
 
 
 class Profile():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
+    def getRoute(self, accID, region, name):
+        return 'sc2/profile/{}/{}/{}/'.format(accID, region, name)
 
     def profile(self,
                 server="eu",
@@ -12,12 +12,10 @@ class Profile():
                 name="Prototype",
                 locale="en_US"):
 
-        url = 'https://{}.api.battle.net/sc2/profile/{}/{}/{}/?locale={}&apikey={}'.format(
-            server, accID, region, name, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.getRoute(accID, region, name))
 
     def ladders(self,
                 server="eu",
@@ -26,12 +24,9 @@ class Profile():
                 name="Prototype",
                 locale="en_US"):
 
-        url = 'https://{}.api.battle.net/sc2/profile/{}/{}/{}/ladders?locale={}&apikey={}'.format(
-            server, accID, region, name, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = self.getRoute(accID, region, name) + 'ladders'
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def matchHistory(self,
                      server="eu",
@@ -40,9 +35,6 @@ class Profile():
                      name="Prototype",
                      locale="en_US"):
 
-        url = 'https://{}.api.battle.net/sc2/profile/{}/{}/{}/matches?locale={}&apikey={}'.format(
-            server, accID, region, name, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = self.getRoute(accID, region, name) + 'matches'
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

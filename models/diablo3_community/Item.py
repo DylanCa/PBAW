@@ -1,18 +1,12 @@
-import requests
+from models import Fetcher
 
 
 class Item():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
     def getItem(self,
                 server="eu",
                 itemSlugAndID='corrupted-ashbringer-Unique_Sword_2H_104_x1',
                 locale="en_US"):
 
-        url = 'https://{}.api.battle.net/d3/data/item/{}?locale={}&apikey={}'.format(
-            server, itemSlugAndID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/d3/data/item/{}'.format(itemSlugAndID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

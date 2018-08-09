@@ -1,9 +1,9 @@
-import requests
+from models import Fetcher
 
 
 class CharacterProfile():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
+    def __init__(self):
+        self.route = '/wow/character/{}/{}'
 
     def characterProfile(self,
                          server="eu",
@@ -11,12 +11,9 @@ class CharacterProfile():
                          characterName="Protòtype",
                          locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = self.route.format(realm, characterName)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def achievements(self,
                      server="eu",
@@ -24,12 +21,13 @@ class CharacterProfile():
                      characterName="Protòtype",
                      locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=achievements&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=achievements')
 
     def appearance(self,
                    server="eu",
@@ -37,12 +35,13 @@ class CharacterProfile():
                    characterName="Protòtype",
                    locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=appearance&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=appearance')
 
     def feed(self,
              server="eu",
@@ -50,12 +49,13 @@ class CharacterProfile():
              characterName="Protòtype",
              locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=feed&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=feed')
 
     def guild(self,
               server="eu",
@@ -63,12 +63,13 @@ class CharacterProfile():
               characterName="Protòtype",
               locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=guild&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=guild')
 
     def hunterPets(self,
                    server="eu",
@@ -76,12 +77,13 @@ class CharacterProfile():
                    characterName="Protòtype",
                    locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=hunterPets&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=hunterPets')
 
     def items(self,
               server="eu",
@@ -89,12 +91,13 @@ class CharacterProfile():
               characterName="Protòtype",
               locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=items&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=items')
 
     def mounts(self,
                server="eu",
@@ -102,12 +105,13 @@ class CharacterProfile():
                characterName="Protòtype",
                locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=mounts&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=mounts')
 
     def pets(self,
              server="eu",
@@ -115,12 +119,13 @@ class CharacterProfile():
              characterName="Protòtype",
              locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=pets&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=pets')
 
     def petSlots(self,
                  server="eu",
@@ -128,12 +133,13 @@ class CharacterProfile():
                  characterName="Protòtype",
                  locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=petSlots&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=petSlots')
 
     def professions(self,
                     server="eu",
@@ -141,12 +147,13 @@ class CharacterProfile():
                     characterName="Protòtype",
                     locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=professions&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=professions')
 
     def progression(self,
                     server="eu",
@@ -154,12 +161,13 @@ class CharacterProfile():
                     characterName="Protòtype",
                     locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=progression&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=progression')
 
     def pvp(self,
             server="eu",
@@ -167,12 +175,13 @@ class CharacterProfile():
             characterName="Protòtype",
             locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=pvp&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=pvp')
 
     def quests(self,
                server="eu",
@@ -180,12 +189,13 @@ class CharacterProfile():
                characterName="Protòtype",
                locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=quests&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=quests')
 
     def reputation(self,
                    server="eu",
@@ -193,12 +203,13 @@ class CharacterProfile():
                    characterName="Protòtype",
                    locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=reputation&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=reputation')
 
     def statistics(self,
                    server="eu",
@@ -206,12 +217,13 @@ class CharacterProfile():
                    characterName="Protòtype",
                    locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=statistics&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=statistics')
 
     def stats(self,
               server="eu",
@@ -219,12 +231,13 @@ class CharacterProfile():
               characterName="Protòtype",
               locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=stats&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=stats')
 
     def talents(self,
                 server="eu",
@@ -232,12 +245,13 @@ class CharacterProfile():
                 characterName="Protòtype",
                 locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=talents&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=talents')
 
     def titles(self,
                server="eu",
@@ -245,12 +259,13 @@ class CharacterProfile():
                characterName="Protòtype",
                locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=titles&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=titles')
 
     def audit(self,
               server="eu",
@@ -258,9 +273,10 @@ class CharacterProfile():
               characterName="Protòtype",
               locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/character/{}/{}?fields=audit&locale={}&apikey={}'.format(
-            server, realm, characterName, locale, self.apikey)
+        self.route = self.route.format(realm, characterName)
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.route,
+            params='fields=audit')
