@@ -1,15 +1,9 @@
-import requests
+from models import Fetcher
 
 
 class Follower():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
     def getFollower(self, server="eu", followerSlug='templar', locale="en_US"):
 
-        url = 'https://{}.api.battle.net/d3/data/follower/{}?locale={}&apikey={}'.format(
-            server, followerSlug, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/d3/data/follower/{}'.format(followerSlug)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

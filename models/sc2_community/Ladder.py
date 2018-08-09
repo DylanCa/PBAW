@@ -1,15 +1,9 @@
-import requests
+from models import Fetcher
 
 
 class Ladder():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
     def ladder(self, server="eu", ladderID="655", locale="en_US"):
 
-        url = 'https://{}.api.battle.net/sc2/ladder/{}?locale={}&apikey={}'.format(
-            server, ladderID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/sc2/ladder/{}'.format(ladderID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

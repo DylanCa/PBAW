@@ -1,15 +1,10 @@
-import requests
+from models import Fetcher
 
 
 class Achievement():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
+    
     def achievement(self, server="eu", achievementID="2144", locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/achievement/{}?locale={}&apikey={}'.format(
-            server, achievementID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/achievement/{}'.format(achievementID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

@@ -1,65 +1,54 @@
-import requests
+from models import Fetcher
 
 
 class Profile():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
+    def getRouteHero(self, account, hero):
+        return '/d3/profile/{}%23{}/hero/{}'.format(
+            account.split("#")[0],
+            account.split("#")[1], hero)
 
     def getApiAccount(self,
                       server="eu",
                       account="Prototype#2971",
                       locale="en_US"):
-        accountName = account.split("#")[0]
-        accountNumber = account.split("#")[1]
 
-        url = 'https://{}.api.battle.net/d3/profile/{}%23{}/?locale={}&apikey={}'.format(
-            server, accountName, accountNumber, locale, self.apikey)
+        self.route = '/d3/profile/{}%23{}/'.format(
+            account.split("#")[0],
+            account.split("#")[1])
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def getApiHero(self,
                    server="eu",
                    account="Prototype#2971",
                    hero="109407264",
                    locale="en_US"):
-        accountName = account.split("#")[0]
-        accountNumber = account.split("#")[1]
 
-        url = 'https://{}.api.battle.net/d3/profile/{}%23{}/hero/{}?locale={}&apikey={}'.format(
-            server, accountName, accountNumber, hero, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server,
+            locale=locale,
+            route=self.getRouteHero(account, hero))
 
     def getApiDetailedHeroItems(self,
                                 server="eu",
                                 account="Prototype#2971",
                                 hero="109407264",
                                 locale="en_US"):
-        accountName = account.split("#")[0]
-        accountNumber = account.split("#")[1]
 
-        url = 'https://{}.api.battle.net/d3/profile/{}%23{}/hero/{}/items?locale={}&apikey={}'.format(
-            server, accountName, accountNumber, hero, locale, self.apikey)
+        self.route = '{}/items'.format(self.getRouteHero(account, hero))
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def getApiDetailedFollowerItems(self,
                                     server="eu",
                                     account="Prototype#2971",
                                     hero="109407264",
                                     locale="en_US"):
-        accountName = account.split("#")[0]
-        accountNumber = account.split("#")[1]
 
-        url = 'https://{}.api.battle.net/d3/profile/{}%23{}/hero/{}/follower-items?locale={}&apikey={}'.format(
-            server, accountName, accountNumber, hero, locale, self.apikey)
+        self.route = '{}/follower-items'.format(
+            self.getRouteHero(account, hero))
 
-        response = requests.get(url)
-
-        return response.text
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

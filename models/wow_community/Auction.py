@@ -1,15 +1,10 @@
-import requests
+from models import Fetcher
 
 
 class Auction():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
 
     def auction(self, server="eu", realm="archimonde", locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/auction/data/{}?locale={}&apikey={}'.format(
-            server, realm, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/auction/data/{}'.format(realm)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)

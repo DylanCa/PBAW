@@ -1,42 +1,27 @@
-import requests
+from models import Fetcher
 
 
 class Pet():
-    def __init__(self, apikey=''):
-        self.apikey = apikey
-
     def masterList(self, server="eu", locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/pet/?locale={}&apikey={}'.format(
-            server, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/pet'
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def abilities(self, server="eu", abilityID=640, locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/pet/ability/{}?locale={}&apikey={}'.format(
-            server, abilityID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/pet/ability/{}'.format(abilityID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def species(self, server="eu", speciesID=258, locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/pet/species/{}?locale={}&apikey={}'.format(
-            server, speciesID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/pet/species/{}'.format(speciesID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
 
     def stats(self, server="eu", speciesID=258, locale="en_US"):
 
-        url = 'https://{}.api.battle.net/wow/pet/stats/{}?locale={}&apikey={}'.format(
-            server, speciesID, locale, self.apikey)
-
-        response = requests.get(url)
-
-        return response.text
+        self.route = '/wow/pet/stats/{}'.format(speciesID)
+        return Fetcher.fetchData(
+            server=server, locale=locale, route=self.route)
