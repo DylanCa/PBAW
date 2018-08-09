@@ -2,7 +2,6 @@ from models import Fetcher
 
 
 class Item():
-
     def item(self, server="eu", itemID=18803, locale="en_US"):
 
         self.route = '/wow/item/{}'.format(itemID)

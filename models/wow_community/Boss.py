@@ -2,7 +2,6 @@ from models import Fetcher
 
 
 class Boss():
-
     def masterList(self, server="eu", locale="en_US"):
 
         return Fetcher.fetchData(
