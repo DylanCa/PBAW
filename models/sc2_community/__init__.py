@@ -1,4 +1,4 @@
-from.Profile import Profile
+from .Profile import Profile
 from .Ladder import Ladder
 from .DataRessources import DataRessources
 
