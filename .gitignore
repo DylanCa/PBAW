@@ -56,3 +56,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Local Config file w/ API KEY and SECRET KEY
+local_config.py
